@@ -9,13 +9,13 @@ class Client(models.Model):
 
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=254, unique=False)
-    email = models.EmailField(max_length=254)
+    email = models.EmailField(max_length=254, unique=True)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('clients:all',kwargs={'username':self.user.username,'pk':self.pk})
+        return reverse('clients:all')
 
     class Meta:
         ordering = ['name']

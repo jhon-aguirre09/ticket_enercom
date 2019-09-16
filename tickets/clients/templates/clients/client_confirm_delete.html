@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Eliminar</title>
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <form method="POST">
+    {% csrf_token %}
+    <h1 class="lead">Estas seguro de borrar {{ object.email }}?</h1>
+    <input type="submit" value="Confirm Delete" class="btn btn-danger btn-large">
+    <a href="{% url 'clients:all' %}" class="btn btn-secondary btn-large">Cancel</a>
+  </form>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
