@@ -22,7 +22,7 @@ q:before, q:after {
 }
 footer {
     position: relative;
-    margin-top: 11%;
+    margin-top: 32%;
     text-align: center;
     width: auto;
 }
@@ -45,11 +45,11 @@ footer {
 @media screen and (max-height: 900px) {
 
   footer {
-    margin-top: 9%;
+    margin-top: 28%;
   }
 
   .register-title {
-    margin: 6em auto 20px;
+    margin: 7em auto 20px;
   }
 
 }
@@ -57,11 +57,11 @@ footer {
 @media screen and (max-height: 768px) {
 
   footer {
-    margin-top: 4%;
+    margin-top: 16%;
   }
 
   .register-title {
-    margin: 4em auto 20px;
+    margin: 5em auto 20px;
   }
 
 }
@@ -82,6 +82,9 @@ input {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+.logo {
+  width: 200px;
 }
 
 .register-input {

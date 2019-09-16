@@ -21,25 +21,43 @@
   <body>
     <nav class='navbar navbar-expand-lg navbar-light bg-light'>
       <div class="container">
-        <a class='navbar-brand' href='{% url 'login' %}'><img src="{% static 'tickets/images/Logo Enercom SA.jpg' %}" alt=""></a>
-        <ul class='nav navbar-nav'>
+        <a href='{% url "dashboard" %}' class='navbar-brand'><img class="logo" src="{% static 'tickets/images/Logo Enercom SA.jpg' %}" alt=""></a>
+        <!-- <ul class='nav navbar-nav'> -->
           {% if user.is_authenticated %}
-            <li class="nav-item"> <a class="nav-link" href="{% url 'accounts:logout' %}">Log Out</a> </li>
-          {% else %}
-            <li class="nav-item"> <a class="nav-link" href="#">Groups</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="{% url 'accounts:login' %}">Log In</a> </li>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown mr-sm-2">
+              <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Tickets
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item text-primary h6" href="#">Nuevo</a>
+              </div>
+            </li>
+              <li class="nav-item dropdown mr-sm-2">
+                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Clientes
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item text-primary h6 " href="{% url 'clients:all' %}">Todos</a>
+                  <a class="dropdown-item text-primary h6" href="#">Nuevo</a>
+                </div>
+              </li>
+            </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0 mr-sm-2 " type="submit">Buscar</button>
+          </form>
+          <a href="{% url 'accounts:logout' %}"><button class="btn btn-outline-warning">Salir</button></a>
           {% endif %}
-        </ul>
       </div>
     </nav>
     <div class="container">
-      {% block content %}
+      {% block content %}{% endblock %}
 
+      {% block footer %}
+        <footer><img src="{% static 'tickets/images/footer.jpg' %}" alt=""></footer>
       {% endblock %}
     </div>
-    <canvas id="canvas"></canvas>
-    <footer><img src="{% static 'tickets/images/footer.jpg' %}" alt=""></div>
-    </footer>
   </body>
   <script type="text/javascript" src="{% static 'simplesocial/js/master.js' %}">
   </script>

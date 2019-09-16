@@ -19,8 +19,11 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('accounts.urls', namespace='accounts')),
-    path('', include('django.contrib.auth.urls')),
-    path('test/',views.TestPage.as_view(), name='test'),
+    path('', views.HomePage),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('tickets/', include('dataTickets.urls', namespace='dataTickets')),
+    path('clients/', include('clients.urls', namespace='clients')),
+    path('dashboard/',views.DashboardPage.as_view(), name='dashboard'),
     path('thanks/',views.ThanksPage.as_view(), name='thanks'),
 ]

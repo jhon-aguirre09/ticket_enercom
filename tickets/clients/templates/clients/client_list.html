@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Clientes</title>
+{% endblock %}
+{% block content %}
+<p></p>
+  {% regroup client_list by name as client_lists %}
+  {% for clients in client_lists %}
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header bg-warning" id="heading{{clients.grouper}}">
+          <h2 class="mb-0">
+            <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#collapse{{clients.grouper}}" aria-expanded="false" aria-controls="collapse{{clients.grouper}}">
+              {{ clients.grouper }}
+            </button>
+          </h2>
+        </div>
+        <div id="collapse{{clients.grouper}}" class="collapse bg-light" aria-labelledby="heading{{clients.grouper}}" data-parent="#accordionExample">
+          <div class="card-body  text-info">
+            {% for client_only in clients.list %}
+              <p class="card-text">{{ client_only.email }},</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}
+{% block footer %}{% endblock %}
