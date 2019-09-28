@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Grupos</title>
+{% endblock %}
+{% block content %}
+<p></p>
+  {% regroup groups_list by name as groups_lists %}
+  <div class="accordion" id="accordionExample">
+    {% for group in groups_lists %}
+      <div class="card border-info">
+        <div class="card-header border-warning" id="heading{{group.grouper}}">
+          <h2 class="mb-0">
+            <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#collapse{{group.grouper}}" aria-expanded="false" aria-controls="collapse{{group.grouper}}">
+              {{ group.grouper }}
+            </button>
+          </h2>
+        </div>
+        <div id="collapse{{group.grouper}}" class="collapse" aria-labelledby="heading{{group.grouper}}" data-parent="#accordionExample">
+          <div class="card-body text-info">
+            {% for group_only in group.list %}
+              <form>
+                <div class="form-inline">
+                  <div class="col-sm-10">
+                    {{ group_only.client.client}},
+                  </div>
+                </div>
+              </form>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+{% block footer %}{% endblock %}

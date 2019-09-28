@@ -16,6 +16,9 @@ User = get_user_model()
 class ClientList(LoginRequiredMixin,generic.ListView):
     model = models.Client
 
+class GroupsList(LoginRequiredMixin,generic.ListView):
+    model = models.Groups
+
 class CreateClient(LoginRequiredMixin,generic.CreateView):
     fields = ('name','email')
     model = models.Client
@@ -25,6 +28,16 @@ class CreateClient(LoginRequiredMixin,generic.CreateView):
         self.object.user = self.request.user
         self.object.save()
         return super().form_valid(form)
+
+# class CreateGroup(LoginRequiredMixin,generic.CreateView):
+#     fields = ('name','email')
+#     model = models.Client
+#
+#     def form_valid(self,form):
+#         self.object = form.save(commit=False)
+#         self.object.user = self.request.user
+#         self.object.save()
+#         return super().form_valid(form)
 
 class DeleteClient(LoginRequiredMixin,generic.DeleteView):
     model = models.Client
